@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.io.*;
+import java.util.ArrayList;
+public class Example {
+    public static void main(String[] args) {
+        int d=0;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the size of array elements");
+        int n = scan.nextInt();
+        ArrayList<Integer>[] al = new ArrayList[n];
+        System.out.println("Enter the array elements");
+        for (int i=0;i<n;i++){
+            d = scan.nextInt();
+            al[i] = new ArrayList();
+            for (int j=0;j<d;j++)
+                al[i].add(scan.nextInt());
+        }
+        System.out.println("Enter q");
+        int q = scan.nextInt();
+        while (q>0)
+        {
+            q--;
+            System.out.println("Enter row");
+            int row = scan.nextInt();
+            System.out.println("Enter column");
+            int col = scan.nextInt();
+            System.out.println(al[row-1].get(col-1));
+        }
+
+
+    }
+}
+
