@@ -1,0 +1,25 @@
+import java.util.HashMap;
+import java.util.Scanner;
+public class Solution {
+    public static void main(String[] args)
+    {
+        Scanner scan = new Scanner(System.in);
+        HashMap<String,String> map = new HashMap<>();
+        int n = scan.nextInt();
+        while (n>0)
+        {
+            n--;
+            String name = scan.next();
+            String contact = scan.next();
+            map.put(name,contact);
+        }
+        while (scan.hasNext())
+        {
+            String query = scan.next();
+            if (map.containsKey(query))
+                System.out.println(query+"="+map.get(query));
+            else
+                System.out.println("Not found");
+        }
+    }
+}
