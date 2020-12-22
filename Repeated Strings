@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class RepeatedString {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.next();
+        int n = scan.nextInt();
+        HashMap<Character, Integer> map = new HashMap<>();
+        int j = 0;
+        for (int i = 1; i <= n; i++) {
+            int localcount = 0;
+            if (j == s.length())
+                j = 0;
+            if (map.containsKey(s.charAt(j))) {
+                localcount = map.get(s.charAt(j));
+            }
+
+            map.put(s.charAt(j), localcount + 1);
+            j++;
+
+
+        }
+        Iterator itr = map.entrySet().iterator();
+        while (itr.hasNext()) {
+            Map.Entry mapElement = (Map.Entry) itr.next();
+            if ((char) mapElement.getKey() == 'a')
+                System.out.println(mapElement.getValue());
+        }
+
+    }
+}
