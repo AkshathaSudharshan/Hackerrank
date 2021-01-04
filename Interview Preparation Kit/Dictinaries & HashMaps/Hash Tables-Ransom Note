@@ -1,0 +1,81 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the checkMagazine function below.
+    static void checkMagazine(String[] str1, String[] str2) {
+        boolean flag = true;
+        HashMap<String,Integer> map = new HashMap<>();
+         for (int i=0;i< str1.length;i++)
+        {
+            int localcount=0;
+            if (map.containsKey(str1[i]))
+                localcount=map.get(str1[i]);
+            map.put(str1[i],localcount+1);
+        }
+        for (int i=0;i< str2.length;i++)
+        {
+            if (map.containsKey(str2[i]))
+            {
+                int lcnnt = map.get(str2[i]);
+                if(lcnnt-1<0)
+                {
+                    flag=false;
+                    break;
+                }
+                else
+                    map.replace(str2[i],lcnnt-1);
+            }
+            else
+            {
+                flag=false;
+                break;
+            }
+        }
+        if (flag)
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        String[] mn = scanner.nextLine().split(" ");
+
+        int m = Integer.parseInt(mn[0]);
+
+        int n = Integer.parseInt(mn[1]);
+
+        String[] magazine = new String[m];
+
+        String[] magazineItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        for (int i = 0; i < m; i++) {
+            String magazineItem = magazineItems[i];
+            magazine[i] = magazineItem;
+        }
+
+        String[] note = new String[n];
+
+        String[] noteItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        for (int i = 0; i < n; i++) {
+            String noteItem = noteItems[i];
+            note[i] = noteItem;
+        }
+
+        checkMagazine(magazine, note);
+
+        scanner.close();
+    }
+}
