@@ -1,0 +1,16 @@
+class Solution {
+    public int addDigits(int num) {
+        int res=0 ,sum=0;
+        while (num>9)
+        {
+            do {
+                res = num%10;
+                sum+=res;
+                num=num/10;
+            }while (num>0);
+            num=sum;
+            sum=0;
+        }
+        return num;
+    }
+}
