@@ -1,0 +1,38 @@
+import java.io.*;
+import java.util.*;
+
+class Node {
+	int data;
+	Node next;
+	Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+
+class Solution {
+
+    public static  Node insert(Node head,int data) {
+        //Complete this method
+       
+        if(head==null)
+        {
+             Node p = new Node(data);
+            // p.next=null;
+            head=p;
+          return head;
+        }
+        else
+        {
+            Node p = new Node(data);
+            Node q = head;
+            while(q.next!=null)
+                q=q.next;
+            
+            q.next=p;
+            return head;
+        }
+        
+    }
+
+	public static void display(Node head) {
