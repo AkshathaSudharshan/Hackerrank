@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int rd = scan.nextInt();
+        int rm = scan.nextInt();
+        int ry = scan.nextInt();
+        int ad = scan.nextInt();
+        int am = scan.nextInt();
+        int ay = scan.nextInt();
+        int fine=0;
+        if(ry>ay)
+            fine = 10000;
+        else if((rm>am)&&(ry==ay))
+        {
+            fine = 500*(rm-am);
+        }
+        else if((rd>ad)&&(rm==am)&&(ry==ay))
+        {
+            fine = 15*(rd-ad);
+        }
+        else
+            fine = 0;
+        System.out.println(fine);
+        
+        
+        
+    }
+}
