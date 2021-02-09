@@ -1,0 +1,114 @@
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static class SinglyLinkedListNode {
+        public int data;
+        public SinglyLinkedListNode next;
+
+        public SinglyLinkedListNode(int nodeData) {
+            this.data = nodeData;
+            this.next = null;
+        }
+    }
+
+    static class SinglyLinkedList {
+        public SinglyLinkedListNode head;
+        public SinglyLinkedListNode tail;
+
+        public SinglyLinkedList() {
+            this.head = null;
+            this.tail = null;
+        }
+
+        public void insertNode(int nodeData) {
+            SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
+
+            if (this.head == null) {
+                this.head = node;
+            } else {
+                this.tail.next = node;
+            }
+
+            this.tail = node;
+        }
+    }
+
+    public static void printSinglyLinkedList(SinglyLinkedListNode node, String sep, BufferedWriter bufferedWriter) throws IOException {
+        while (node != null) {
+            bufferedWriter.write(String.valueOf(node.data));
+
+            node = node.next;
+
+            if (node != null) {
+                bufferedWriter.write(sep);
+            }
+        }
+    }
+
+    // Complete the compareLists function below.
+
+    /*
+     * For your reference:
+     *
+     * SinglyLinkedListNode {
+     *     int data;
+     *     SinglyLinkedListNode next;
+     * }
+     *
+     */
+    static boolean compareLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
+        SinglyLinkedListNode pl1 = head1;
+        SinglyLinkedListNode pl2 = head2;
+        boolean equal = true;
+        int l1=0,l2=0;
+        while(pl1!=null)
+        {
+            l1++;
+            pl1 = pl1.next;
+        }
+        while(pl2!=null)
+        {
+            l2++;
+            pl2 = pl2.next;
+        }
+        if(l1!=l2)
+        {
+             equal = false;
+        }
+        else
+        {
+            pl1 = head1;
+            pl2 = head2;
+            while((pl1!=null)&&(pl2!=null))
+        {
+            if(pl1.data==pl2.data)
+            {
+                pl1 = pl1.next;
+                pl2 = pl2.next;
+        
+            }
+            else
+            {
+                 equal = false;
+                    break;
+            }
+             
+               
+        }
+        }
+        
+        
+       
+        if(equal)
+            return true;
+        else
+            return false;
+
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
