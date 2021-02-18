@@ -1,0 +1,64 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+public class Solution {
+
+    // Complete the migratoryBirds function below.
+    static int migratoryBirds(List<Integer> arr) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for (int i=0;i<arr.size();i++)
+        {
+            int localcount = 0;
+            if (map.containsKey(arr.get(i)))
+                localcount = map.get(arr.get(i));
+            map.put((int)arr.get(i),localcount+1);
+        }
+         int max = 0,key=0;
+        for (Map.Entry mapElement : map.entrySet()) {
+           if(max<(int)mapElement.getValue())
+           {
+               max=((int)mapElement.getValue());
+               key = (int) mapElement.getKey();
+           }
+
+           else if(max==((int)mapElement.getValue()))
+           {
+               int key1 = ((int)mapElement.getValue());
+               if(key>key1)
+                   key=key1;
+           }
+
+        }
+        return key;
+
+
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int arrCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+            .map(Integer::parseInt)
+            .collect(toList());
+
+        int result = migratoryBirds(arr);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
