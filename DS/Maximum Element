@@ -1,0 +1,27 @@
+import java.util.*;
+public class MaxElement {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Stack<Integer> stack = new Stack<>();
+        int t = scan.nextInt();
+        while (t-- > 0) {
+            int n = scan.nextInt();
+            if (n == 1) {
+                int element = scan.nextInt();
+                stack.push(element);
+            } else if (n == 2) {
+                stack.pop();
+            } else if (n == 3) {
+                int max=0;
+                for(Integer a:stack)
+                {
+                    if(max<a.intValue())
+                        max=a.intValue();
+                }
+                System.out.println(max);
+
+
+            }
+        }
+    }
+}
